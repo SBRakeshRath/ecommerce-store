@@ -1,0 +1,42 @@
+@use "./../../style/_config.sass" as dv;
+
+#login {
+  margin: auto;
+  // flex-grow: 1;
+  header {
+    @include dv.header-center-main;
+    color: dv.$color-dark-blue;
+    margin-top: 0px;
+  }
+
+  .small-box-one-cont {
+    margin-bottom: 30px;
+  }
+  .button {
+    margin-top: 10px;
+  }
+  .phoneNumberContainer {
+    @include dv.flex-column;
+
+    margin-bottom: 50px;
+  }
+
+  $td: 0.25s;
+  .otpContainer {
+    @include dv.flex-column;
+    margin-bottom: 30px;
+  }
+
+  .recaptchaContainer {
+    div {
+      div {
+        width: 100% !important;
+
+        iframe {
+          background-color: #fff;
+          width: 100%;
+        }
+      }
+    }
+  }
+}

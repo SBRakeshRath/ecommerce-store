@@ -1,0 +1,27 @@
+@use "style/_config.sass" as *;
+.text-border {
+  position: relative;
+  margin: 35px 0;
+  .wrapper {
+    height: auto;
+    p {
+      position: absolute;
+      top: 0;
+      left: 50;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      background-color: white;
+      padding: 0 5px;
+    }
+    .border {
+      height: 1px;
+      background: $color-light-black;
+      top: 50%;
+      position: absolute;
+      transform: translateY(-50%);
+      width: 100%;
+    }
+  }
+}

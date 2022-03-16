@@ -1,0 +1,36 @@
+@use "./../../../style//_config.sass" as *;
+
+.globalErrorMessageBox {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  max-width: 100%;
+  padding: 20px 20px;
+  background-color: $color-black;
+  color: $color-yellow;
+  pointer-events: all;
+  .wrapper {
+    position: relative;
+    color: inherit;
+
+    @include flex-row;
+    flex-wrap: nowrap;
+
+    div {
+      margin-right: 10px;
+      color: inherit;
+      @include flex-center;
+    }
+    .status {
+      border-right: 3px solid $color-dark-blue;
+      padding-right: 10px;
+      @include flex-center;
+      color: $color-super-light-blue;
+    }
+    .closeButton {
+      @include flex-center;
+      color: $white;
+      cursor: pointer;
+    }
+  }
+}

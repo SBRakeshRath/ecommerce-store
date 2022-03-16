@@ -1,0 +1,33 @@
+@use "./../../../style//_config.sass" as *;
+.small-box-one-cont {
+  width: 100%;
+  display: flex;
+  background-color: $antique-white;
+
+  .text {
+    flex-grow: 1;
+    width: 0;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    padding: 15px 25px;
+  }
+  .icon {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+.small-box-one-cont-err {
+  background-color: $color-red;
+  color: $white;
+}
+
+.small-box-one-cont-suc {
+  background-color: $success-green;
+  color: $white;
+}
+.small-box-one-cont-default {
+}

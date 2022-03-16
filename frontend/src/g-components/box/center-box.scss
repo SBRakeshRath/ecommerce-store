@@ -1,0 +1,43 @@
+@use "./../../style/_config.sass" as dv;
+$small: 300px;
+$medium: 900px;
+
+.mainContainerWrapper {
+  height: 100vh;
+  @include dv.flex-center;
+  padding: 20px 0;
+
+  // @media #{dv.$media-desktop} {
+  // background-color: black;
+  // }
+
+  // @media #{dv.$media-tablet} {
+  // background-color: blue;
+
+  // }
+
+  // @media #{dv.$media-mobile} {
+  // background-color: green;
+
+  // }
+
+  .box-wrapper {
+    @include dv.center-section;
+    @include dv.flex-column;
+    position: relative;
+
+    @media #{dv.$media-mobile-sm} {
+      box-shadow: none;
+      max-width: 100%;
+      margin-top: 10px;
+      
+    }
+    .main-container {
+      // @include dv.center-section;
+      @include dv.flex-column;
+      // padding: 5%;
+      position: relative;
+      overflow-y: auto;
+    }
+  }
+}

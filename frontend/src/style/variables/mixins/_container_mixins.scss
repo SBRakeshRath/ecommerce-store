@@ -1,0 +1,13 @@
+@use "./../color" as c;
+@use "./../media_breakpoints" as media ;
+@mixin center-section {
+  width: 450px;
+  // min-height: 450px;
+
+  max-width: 95%;
+  margin: auto;
+  max-height: 100%;
+  box-shadow: 0px 0px 20px -5px c.$color-black-shadow;
+  overflow: hidden;
+  
+}

@@ -1,0 +1,17 @@
+@use "./../../../style/_config.sass" as dv;
+.horizontalyCenterBox {
+  position: relative;
+  width: 450px;
+  // min-height: 450px;
+
+  max-width: 95%;
+  margin: auto;
+  box-shadow: 0px 0px 20px -5px dv.$color-black-shadow;
+  overflow-x: hidden;
+  min-height: 200px;
+  .HorizontalyCenterBoxWrapper {
+    .HorizontalyCenterBoxMain {
+      padding: 20px 10px;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+@use "./../../style/_config.sass" as *;
+.customHelperText {
+  display: flex;
+  width: 100%;
+  font-size: 0.7rem;
+  color: $color-red;
+  //   @include flex-center;
+  .text {
+    flex-grow: 1;
+    overflow-wrap: break-word;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    flex-direction: column;
+    font-size: inherit;
+  }
+  .icon {
+    @include flex-center;
+    font-size: inherit;
+  }
+}

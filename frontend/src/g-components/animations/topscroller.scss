@@ -1,0 +1,24 @@
+@use "style/_config.sass" as *;
+.animator {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: $transparent-white;
+  z-index: 99999;
+  overflow-x: hidden;
+  .scroll {
+    width: 100%;
+    // background-color: red;
+    height: 50px;
+    display: flex;
+    transform: translateX(0);
+
+    div {
+      //   background-color: #ad3939;
+    //   margin-top: 5px;
+      min-width: 100%;
+      height: 10px;
+      //   transition: transform 1500ms ease-in-out;
+    }
+  }
+}

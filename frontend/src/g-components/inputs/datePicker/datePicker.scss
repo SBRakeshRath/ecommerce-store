@@ -1,0 +1,24 @@
+@use "./../../../style/_config.sass" as dv;
+
+#customDatePicker {
+  margin-bottom: 20px ;
+  @include dv.flex-column;
+  // justify-content: space-between;
+  .customDatePicker_header {
+    margin-bottom : 15px ;
+    color  :dv.$color-black
+
+  }
+  .contain {
+    @include dv.flex-row ;
+    width : 100% ;
+    justify-content: space-between;
+  }
+
+  .selectorBox {
+    width: 30%;
+  }
+  .customDatePickerErr{
+    margin-top: 5px;
+  }
+}

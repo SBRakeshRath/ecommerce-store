@@ -1,0 +1,46 @@
+@use "./../../../style/_config.sass" as dv;
+
+.custom_text_area_holder {
+  position: relative;
+  .custom_text_area_holder_header {
+    margin-bottom: 10px;
+  }
+
+  .spanContainer {
+    position: relative;
+
+    .spanTextArea {
+      resize: none;
+      width: 100%;
+      min-height: 50px;
+      padding: 20px 10px;
+      overflow: hidden;
+      display: block;
+      width: 100%;
+      overflow: hidden;
+      line-height: 20px;
+      border: 1px solid dv.$color-black-super-light;
+      font-family: inherit;
+      font-size: inherit;
+      outline: none ;
+      border-radius: 5px;
+    }
+    .spanTextAreaFocused {
+      border: 2px solid dv.$color-blue-border;
+
+    }
+    .count {
+      position: absolute;
+      bottom: 0;
+      right: 5px;
+      font-size: 0.8rem;
+    }
+    margin-bottom: 10px;
+  }
+  .errText {
+    color: dv.$color-red;
+  }
+  .custom_text_area_holder_errorContainer {
+    @include dv.flex-row;
+  }
+}

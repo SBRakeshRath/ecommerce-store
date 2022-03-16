@@ -1,0 +1,24 @@
+@use "./../../../style/_config.sass" as *;
+$font-size: 0.8rem;
+.time-out-loader-container {
+  @include flex-row;
+  justify-content: end;
+  align-items: center;
+
+  .scroller {
+    height: $font-size;
+    width: $font-size;
+    margin-right: 10px;
+    span {
+      height: $font-size;
+      width: $font-size;
+    }
+  }
+  .text {
+    margin-right: 5px;
+    font-size: $font-size;
+  }
+  .time {
+    font-size: $font-size;
+  }
+}

@@ -1,0 +1,48 @@
+@use "./../../../style/_config.sass" as dv;
+
+#phoneNoPicker {
+  @include dv.flex-row;
+  // margin-bottom: 20px;
+
+  .countryCodeContainer {
+    max-width: 5rem;
+    width: 16%;
+    min-width: 3rem;
+    // border: none;
+    outline: none;
+    position: relative;
+    padding-top: 12px;
+    .flagContainer {
+      position: absolute;
+      display: flex;
+      // height: 100%;
+      width: 100%;
+      .flag {
+        flex-grow: 1;
+        img {
+          width: 100%;
+          object-fit: contain;
+          height: 100%;
+        }
+      }
+      .icon {
+        @include dv.flex-center;
+      }
+    }
+    .countryCodeInput {
+      //   display: none;
+      height: 100%;
+      opacity: 0;
+      width: 100%;
+      //   visibility: hidden;
+      width: 100%;
+      option {
+        color: black;
+      }
+    }
+  }
+
+  .phoneNumberInput {
+    flex-grow: 1;
+  }
+}
