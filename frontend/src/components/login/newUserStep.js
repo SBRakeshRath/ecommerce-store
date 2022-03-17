@@ -39,14 +39,16 @@ export default function NewUSerStep() {
   const fLogin = useSelector((state) => state.userDataReducer.fLogin);
 
   useEffect(() => {
-    console.log(loading);
     if (loading !== isLoading) {
       setLoading(loading);
     }
-  }, [isLoading, loading]);
+  }, [loading]);
   //effect
 
   const submit = async () => {
+    setSmallMessage(["none", ""]);
+    setNameErr([false, ""]);
+    setEmailErr([false, ""]);
     const gender = genderRef.current.value.trim();
     const email = emailRef.current.value.trim();
     const name = nameRef.current.value.trim();
@@ -90,10 +92,15 @@ export default function NewUSerStep() {
       withCredentials: true,
       data: data,
     };
+
+    setLoading(true);
     try {
       await axios(config);
       navigate("/");
+      setLoading(false);
     } catch (error) {
+      setLoading(false);
+
       switch (error.code || error.response.data.code) {
         case "DATA_EXITS":
           navigate("/");
@@ -131,6 +138,7 @@ export default function NewUSerStep() {
 
           break;
       }
+    } finally {
     }
   };
 
@@ -152,6 +160,7 @@ export default function NewUSerStep() {
           label="Enter Name"
           variant="outlined"
           inputRef={nameRef}
+          className = "input-text-field"
           helperText={
             <HelperText text={nameErr[1]} variant={nameErr[0] ? "err" : ""} />
           }
@@ -161,6 +170,7 @@ export default function NewUSerStep() {
           label="Enter Email"
           variant="outlined"
           inputRef={emailRef}
+          className = "input-text-field"
           helperText={
             <HelperText text={emailErr[1]} variant={emailErr[0] ? "err" : ""} />
           }

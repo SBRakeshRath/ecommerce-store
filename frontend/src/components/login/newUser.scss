@@ -15,6 +15,10 @@
   }
   .inputs {
     @include dv.flex-column;
+
+    .input-text-field{
+      margin-bottom: 20px;
+    }
   }
 
   .profile-data-submit-button {
