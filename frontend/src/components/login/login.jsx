@@ -3,6 +3,7 @@ import HorizontalsCenterBox from "g-components/box/horizontalyCenterBox/horizont
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 
 import { Button, TextField } from "@mui/material";
+import { useSelector } from "react-redux";
 import SmallMessageBox1 from "g-components/box/small-message-box/box1";
 import "./login.scss";
 
@@ -12,6 +13,7 @@ import { auth } from "firebase.js";
 import TimeOutLoader from "g-components/text/timeOutLoader/TimeOutLoader";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import FPL from "g-components/animations/fullPAgeLoading/fpl";
 export default function Login(props) {
   const coolDownOtpTimeOut = 30;
   const [isLoading, setLoading] = useState(false);
@@ -48,7 +50,7 @@ export default function Login(props) {
   //effect
 
   useEffect(() => {
-    if (captcha) return;
+    if (captcha || recaptchaContainer == null || recaptchaContainer.current == null) return;
 
     const generatedCaptcha = new RecaptchaVerifier(
       recaptchaContainer.current,
@@ -199,6 +201,31 @@ export default function Login(props) {
       }
     }
   };
+
+
+  const loading = useSelector((state) => state.userDataReducer.loading);
+  const fLogin = useSelector((state) => state.userDataReducer.fLogin);
+  const loggedIn = useSelector((state) => state.userDataReducer.isLoggedIn);
+  
+  useEffect(()=>{
+
+    if(loggedIn){
+      navigate('/')
+      return;
+    }
+
+    if(fLogin) {
+      navigate("/newUser")
+      return;
+    }
+  },[fLogin, loggedIn, navigate])
+
+  if(loading){
+
+    return <FPL/>
+  }
+
+  
 
   return (
     <HorizontalsCenterBox id="login" animation={isLoading}>

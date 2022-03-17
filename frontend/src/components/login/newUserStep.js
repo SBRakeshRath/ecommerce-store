@@ -14,6 +14,7 @@ import SmallMessageBox1 from "g-components/box/small-message-box/box1";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { auth } from "firebase.js";
+import FPL from "g-components/animations/fullPAgeLoading/fpl";
 
 export default function NewUSerStep() {
   // const selector = useSelector();
@@ -37,8 +38,18 @@ export default function NewUSerStep() {
   //select
   const loading = useSelector((state) => state.userDataReducer.loading);
   const fLogin = useSelector((state) => state.userDataReducer.fLogin);
+  const loggedIn = useSelector((state) => state.userDataReducer.isLoggedIn);
+
 
   useEffect(() => {
+
+    if (!loading && !fLogin) {
+      return ;
+    }
+  
+    if(loggedIn){
+      return ;
+    }
     if (loading !== isLoading) {
       setLoading(loading);
     }
@@ -142,9 +153,26 @@ export default function NewUSerStep() {
     }
   };
 
-  if (!loading && !fLogin) {
-    navigate("/login");
+ 
+
+  useEffect(()=>{
+    if (!loading && !fLogin) {
+      navigate("/login");
+      return ;
+    }
+  
+    if(loggedIn){
+      navigate("/");
+      return ;
+    }
+
+  },[fLogin, loading, loggedIn, navigate])
+
+  if(loading){
+    return <FPL />
   }
+
+
   return (
     <HorizontalsCenterBox id="newUSerStep" animation={isLoading}>
       <header>Profile Data</header>
