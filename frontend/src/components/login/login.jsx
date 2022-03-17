@@ -11,6 +11,7 @@ import HelperText from "g-components/text/helperText";
 import { auth } from "firebase.js";
 import TimeOutLoader from "g-components/text/timeOutLoader/TimeOutLoader";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 export default function Login(props) {
   const coolDownOtpTimeOut = 30;
   const [isLoading, setLoading] = useState(false);
@@ -42,9 +43,8 @@ export default function Login(props) {
 
   //func
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  
   //effect
 
   useEffect(() => {
@@ -157,17 +157,38 @@ export default function Login(props) {
       setLoading(true);
       setSignInButtonDisabled(true);
       const res = await conformationCode.confirm(otp);
-      navigate('/')
+      //
       console.log(res);
+
+      //axios
+
+      console.log(res);
+
+      const config = {
+        url: process.env.REACT_APP_BACKEND_LINK + "login",
+        // headers: {
+        //   "csrf-token": token,
+        // },
+        method: "POST",
+        withCredentials: true,
+        data: {
+          idToken: res.user.accessToken,
+        },
+      };
+
+      const res2 = await axios(config);
+      navigate("/");
     } catch (error) {
       setLoading(false);
       setSignInButtonDisabled(false);
-      switch (error.code) {
+      switch (error.code || error.response.data.code) {
         case "auth/invalid-verification-code":
           setSmallMessage(["err", "wrong otp"]);
-          setOtpErr([true,"enter otp"])
+          setOtpErr([true, "enter otp"]);
           break;
-
+        case "NO_PROFILE_DATA":
+          navigate("/newUser");
+          break;
         default:
           setSmallMessage([
             "err",

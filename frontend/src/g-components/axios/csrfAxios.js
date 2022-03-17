@@ -2,7 +2,7 @@ import axios from "axios";
 
 const csrfAxiosApi = async (path, token, configuration, apiRootLink) => {
   const config = configuration || {};
-  const bl = apiRootLink || "http://auth.backend.askforwork.in";
+  const bl = apiRootLink || process.env.REACT_APP_BACKEND_LINK;
   const cfg = {
     url: bl + "/api" + path,
     headers: {
